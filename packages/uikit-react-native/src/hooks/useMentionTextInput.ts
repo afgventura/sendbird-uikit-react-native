@@ -7,13 +7,16 @@ import { SendbirdFileMessage, SendbirdUserMessage, replace, useFreshCallback } f
 import type { MentionedUser } from '../types';
 import { useSendbirdChat } from './useContext';
 
-const useMentionTextInput = (params: { messageToEdit?: SendbirdUserMessage | SendbirdFileMessage }) => {
+const useMentionTextInput = (params: {
+  initialMessage?: string;
+  messageToEdit?: SendbirdUserMessage | SendbirdFileMessage,
+}) => {
   const { mentionManager, sbOptions } = useSendbirdChat();
 
   const mentionedUsersRef = useRef<MentionedUser[]>([]);
   const textInputRef = useRef<TextInput>();
 
-  const [text, setText] = useState('');
+  const [text, setText] = useState(params.initialMessage ?? '');
   const [selection, setSelection] = useState({ start: 0, end: 0 });
 
   // TODO: Refactor text edit logic more clearly

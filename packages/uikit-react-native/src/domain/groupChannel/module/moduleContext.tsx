@@ -37,6 +37,7 @@ export const GroupChannelContextsProvider: GroupChannelModule['Provider'] = ({
   enableTypingIndicator,
   keyboardAvoidOffset = 0,
   groupChannelPubSub,
+  initialMessage,
 }) => {
   if (!channel) throw new Error('GroupChannel is not provided to GroupChannelModule');
 
@@ -64,6 +65,7 @@ export const GroupChannelContextsProvider: GroupChannelModule['Provider'] = ({
           messageToEdit,
           setMessageToEdit,
           keyboardAvoidOffset,
+          initialMessage,
         }}
       >
         <GroupChannelContexts.TypingIndicator.Provider value={{ typingUsers }}>

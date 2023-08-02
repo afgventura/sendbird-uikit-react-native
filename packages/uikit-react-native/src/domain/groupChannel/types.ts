@@ -45,6 +45,8 @@ export interface GroupChannelProps {
     collectionCreator?: UseGroupChannelMessagesOptions['collectionCreator'];
 
     searchItem?: GroupChannelProps['MessageList']['searchItem'];
+
+    initialMessage?: GroupChannelProps['Provider']['initialMessage'];
   };
   Header: {
     shouldHideRight: () => boolean;
@@ -91,6 +93,7 @@ export interface GroupChannelProps {
     enableTypingIndicator: boolean;
     keyboardAvoidOffset?: number;
     groupChannelPubSub: PubSub<GroupChannelPubSubContextPayload>;
+    initialMessage?: string;
   };
 }
 
@@ -106,6 +109,7 @@ export interface GroupChannelContextsType {
     messageToEdit?: SendbirdUserMessage | SendbirdFileMessage;
     setMessageToEdit: (msg?: SendbirdUserMessage | SendbirdFileMessage) => void;
     keyboardAvoidOffset?: number;
+    initialMessage?: string;
   }>;
   TypingIndicator: React.Context<{
     typingUsers: SendbirdUser[];
