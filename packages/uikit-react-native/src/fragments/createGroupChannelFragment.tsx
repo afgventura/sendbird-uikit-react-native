@@ -50,6 +50,7 @@ const createGroupChannelFragment = (initModule?: Partial<GroupChannelModule>): G
     keyboardAvoidOffset,
     collectionCreator,
     sortComparator = messageComparator,
+    initialMessage,
     flatListProps,
   }) => {
     const { sdk, currentUser, sbOptions } = useSendbirdChat();
@@ -158,6 +159,7 @@ const createGroupChannelFragment = (initModule?: Partial<GroupChannelModule>): G
         groupChannelPubSub={groupChannelPubSub}
         enableTypingIndicator={enableTypingIndicator ?? sbOptions.uikit.groupChannel.channel.enableTypingIndicator}
         keyboardAvoidOffset={keyboardAvoidOffset}
+        initialMessage={initialMessage}
       >
         <GroupChannelModule.Header
           shouldHideRight={navigateFromMessageSearch}

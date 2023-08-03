@@ -12,6 +12,7 @@ const GroupChannelInput = (props: GroupChannelProps['Input']) => {
     messageToEdit,
     setMessageToEdit,
     keyboardAvoidOffset = 0,
+    initialMessage,
   } = useContext(GroupChannelContexts.Fragment);
 
   const chatAvailableState = getGroupChannelChatAvailableState(channel);
@@ -25,6 +26,7 @@ const GroupChannelInput = (props: GroupChannelProps['Input']) => {
       inputFrozen={chatAvailableState.frozen}
       inputDisabled={chatAvailableState.disabled}
       keyboardAvoidOffset={keyboardAvoidOffset}
+      initialMessage={initialMessage}
       {...props}
     />
   );

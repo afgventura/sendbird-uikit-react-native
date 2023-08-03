@@ -61,6 +61,9 @@ export type ChannelInputProps = {
 
   // sub-components
   AttachmentsButton?: (props: AttachmentsButtonProps) => JSX.Element | null;
+
+  // initial values
+  initialMessage?: string;
 };
 
 const AUTO_FOCUS = Platform.select({ ios: false, android: true, default: false });
@@ -73,7 +76,7 @@ const GET_INPUT_KEY = (shouldReset: boolean) => (shouldReset ? 'uikit-input-clea
 
 // TODO: Refactor 'Edit' mode to clearly
 const ChannelInput = (props: ChannelInputProps) => {
-  const { channel, keyboardAvoidOffset, messageToEdit, setMessageToEdit } = props;
+  const { channel, keyboardAvoidOffset, messageToEdit, setMessageToEdit, initialMessage } = props;
 
   const { top, left, right, bottom } = useSafeAreaInsets();
   const { colors } = useUIKitTheme();
@@ -81,6 +84,7 @@ const ChannelInput = (props: ChannelInputProps) => {
 
   const { selection, onSelectionChange, textInputRef, text, onChangeText, mentionedUsers } = useMentionTextInput({
     messageToEdit,
+    initialMessage,
   });
   const inputMode = useIIFE(() => {
     if (!messageToEdit) return 'send';
